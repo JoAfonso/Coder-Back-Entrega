@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Smartphone",
+    "description": "Smartphone com ótima câmera",
+    "code": "SM123",
+    "price": 2500,
+    "status": true,
+    "stock": 10,
+    "category": "Eletrônicos",
+    "thumbnails": ["img/smartphone1.png"]
+  },
+  {
+    "id": 2,
+    "title": "Fone de Ouvido",
+    "description": "Fone bluetooth com cancelamento de ruído",
+    "code": "FN456",
+    "price": 350,
+    "status": true,
+    "stock": 50,
+    "category": "Acessórios",
+    "thumbnails": ["img/fone1.png"]
+  }
+]
