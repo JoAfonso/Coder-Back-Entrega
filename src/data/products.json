@@ -1,28 +1,132 @@
 [
   {
     "id": 1,
-    "title": "Smartphone",
-    "description": "Smartphone com ótima câmera",
-    "code": "SM123",
-    "price": 2500,
+    "title": "Camiseta Preta",
+    "description": "Camiseta básica de algodão",
+    "code": "CAM001",
+    "price": 49.9,
     "status": true,
-    "stock": 10,
-    "category": "Eletrônicos",
+    "stock": 50,
+    "category": "Roupas",
     "thumbnails": [
-      "img/smartphone1.png"
+      "camiseta1.jpg"
     ]
   },
   {
     "id": 2,
-    "title": "Fone de Ouvido",
-    "description": "Fone bluetooth com cancelamento de ruído",
-    "code": "FN456",
-    "price": 350,
+    "title": "Tênis Esportivo",
+    "description": "Tênis para corrida com amortecimento",
+    "code": "TEN001",
+    "price": 199.9,
     "status": true,
-    "stock": 50,
+    "stock": 20,
+    "category": "Calçados",
+    "thumbnails": [
+      "tenis1.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Mochila Executiva",
+    "description": "Mochila resistente com compartimento para notebook",
+    "code": "MOC001",
+    "price": 129.9,
+    "status": true,
+    "stock": 15,
     "category": "Acessórios",
     "thumbnails": [
-      "img/fone1.png"
+      "mochila1.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Fone Bluetooth",
+    "description": "Fone sem fio com cancelamento de ruído",
+    "code": "FON001",
+    "price": 89.9,
+    "status": true,
+    "stock": 30,
+    "category": "Eletrônicos",
+    "thumbnails": [
+      "fone1.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Relógio Digital",
+    "description": "Relógio à prova d’água com cronômetro",
+    "code": "REL001",
+    "price": 59.9,
+    "status": true,
+    "stock": 40,
+    "category": "Acessórios",
+    "thumbnails": [
+      "relogio1.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Mouse Gamer RGB",
+    "description": "Mouse com sensor óptico de alta precisão e iluminação RGB",
+    "code": "MOU001",
+    "price": 79.9,
+    "status": true,
+    "stock": 25,
+    "category": "Periféricos",
+    "thumbnails": [
+      "mouse1.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Teclado Mecânico",
+    "description": "Teclado com switches azuis e estrutura reforçada",
+    "code": "TEC001",
+    "price": 149.9,
+    "status": true,
+    "stock": 18,
+    "category": "Periféricos",
+    "thumbnails": [
+      "teclado1.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Monitor Full HD",
+    "description": "Monitor LED de 24 polegadas com resolução 1920x1080",
+    "code": "MON001",
+    "price": 699.0,
+    "status": true,
+    "stock": 10,
+    "category": "Monitores",
+    "thumbnails": [
+      "monitor1.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Cadeira Ergonômica",
+    "description": "Cadeira com apoio lombar e ajuste de altura",
+    "code": "CAD001",
+    "price": 499.0,
+    "status": true,
+    "stock": 12,
+    "category": "Mobiliário",
+    "thumbnails": [
+      "cadeira1.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Webcam HD",
+    "description": "Webcam com microfone embutido para videoconferência",
+    "code": "WEB001",
+    "price": 119.9,
+    "status": true,
+    "stock": 35,
+    "category": "Acessórios",
+    "thumbnails": [
+      "webcam1.jpg"
     ]
   }
 ]
