@@ -1,67 +1,76 @@
 import { promises as fs } from 'fs';
-
-const path = './src/data/products.json';
+import { socketServer } from '../server.js';
 
 class ProductManager {
-    constructor() {
-        this.path = path;
+  constructor() {
+    this.path = './src/data/products.json';
+  }
+
+  async getProducts() {
+    try {
+      const data = await fs.readFile(this.path, 'utf-8');
+      return JSON.parse(data);
+    } catch (err) {
+      return [];
     }
+  }
 
-    async getProducts() {
-        const data = await fs.readFile(this.path, 'utf-8');
-        return JSON.parse(data);
-    }
+  async addProduct(product) {
+    const products = await this.getProducts();
 
-    async getProductById(id) {
-        const products = await this.getProducts();
-        return products.find(p => p.id === id);
-    }
+    const newProduct = {
+      id: products.length > 0 ? products[products.length - 1].id + 1 : 1,
+      status: true,
+      ...product
+    };
 
-    async addProduct(product) {
-        const products = await this.getProducts();
+    products.push(newProduct);
+    await fs.writeFile(this.path, JSON.stringify(products, null, 2));
 
-        const codeExists = products.some(p => p.code === product.code);
-        if (codeExists) {
-            throw new Error(`Produto com código ${product.code} já existe.`);
-        }
+    socketServer.emit('productsUpdated', products);
 
-        const newProduct = {
-            id: products.length > 0 ? products[products.length - 1].id + 1 : 1,
-            status: true,
-            ...product
-        };
+    return newProduct;
+  }
 
-        products.push(newProduct);
-        await fs.writeFile(this.path, JSON.stringify(products, null, 2));
+  async deleteProduct(id) {
+    const products = await this.getProducts();
+    const updated = products.filter(p => p.id !== id);
+    await fs.writeFile(this.path, JSON.stringify(updated, null, 2));
 
-        return newProduct;
-    }
+    socketServer.emit('productsUpdated', updated);
+  }
 
-    async updateProduct(id, updates) {
-        const products = await this.getProducts();
-        const index = products.findIndex(p => p.id === id);
+  async getProductById(id) {
+  const products = await this.getProducts();
+  return products.find(p => p.id === id);
+}
 
-        if (index === -1) throw new Error('Produto não encontrado');
+async updateProduct(id, newData) {
+  const products = await this.getProducts();
+  const index = products.findIndex(p => p.id === id);
 
-        if ('id' in updates) delete updates.id;
+  if (index === -1) {
+    throw new Error('Produto não encontrado');
+  }
 
-        products[index] = { ...products[index], ...updates };
+  // Impede alterar o ID
+  delete newData.id;
 
-        await fs.writeFile(this.path, JSON.stringify(products, null, 2));
+  const updatedProduct = {
+    ...products[index],
+    ...newData
+  };
 
-        return products[index];
-    }
+  products[index] = updatedProduct;
 
-    async deleteProduct(id) {
-        const products = await this.getProducts();
-        const filtered = products.filter(p => p.id !== id);
+  await fs.writeFile(this.path, JSON.stringify(products, null, 2));
 
-        if (products.length === filtered.length) {
-            throw new Error('Produto não encontrado');
-        }
+  // Atualiza a lista em tempo real
+  socketServer.emit('productsUpdated', products);
 
-        await fs.writeFile(this.path, JSON.stringify(filtered, null, 2));
-    }
+  return updatedProduct;
+}
+
 }
 
 export default ProductManager;

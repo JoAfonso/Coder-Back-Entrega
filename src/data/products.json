@@ -8,7 +8,9 @@
     "status": true,
     "stock": 10,
     "category": "Eletrônicos",
-    "thumbnails": ["img/smartphone1.png"]
+    "thumbnails": [
+      "img/smartphone1.png"
+    ]
   },
   {
     "id": 2,
@@ -19,6 +21,8 @@
     "status": true,
     "stock": 50,
     "category": "Acessórios",
-    "thumbnails": ["img/fone1.png"]
+    "thumbnails": [
+      "img/fone1.png"
+    ]
   }
 ]
